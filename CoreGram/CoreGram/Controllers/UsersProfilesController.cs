@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreGram.Data;
+using CoreGram.Data.Dto;
 using CoreGram.Data.Models;
 using CoreGram.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -22,13 +23,13 @@ namespace CoreGram.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserProfile>>> GetAll()
+        public async Task<ActionResult<IEnumerable<UserProfileDto>>> GetAll()
         {
             return Ok(await _repository.GetAll());
         }
         
         [HttpGet("{Id}")]
-        public async Task<ActionResult<UserProfile>> GetById(int Id)
+        public async Task<ActionResult<UserProfileDto>> GetById(int Id)
         {
             return Ok(await _repository.GetById(Id));
         }

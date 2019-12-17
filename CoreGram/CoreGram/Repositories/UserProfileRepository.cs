@@ -1,4 +1,6 @@
-﻿using CoreGram.Data;
+﻿using AutoMapper;
+using CoreGram.Data;
+using CoreGram.Data.Dto;
 using CoreGram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,18 +13,21 @@ namespace CoreGram.Repositories
     public class UserProfileRepository
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public UserProfileRepository(DataContext context)
+        public UserProfileRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<UserProfile>> GetAll()
+        public async Task<IEnumerable<UserProfileDto>> GetAll()
         {
-            return await _context.UsersProfiles.ToListAsync();            
+            var model = await _context.UsersProfiles.ToListAsync();            
+            return _mapper.Map<List<UserProfile>, List<UserProfileDto>>(model);
         }
 
-        public async Task<UserProfile> GetById(int userId)
+        public async Task<UserProfileDto> GetById(int userId)
         {
             //var model = await _context.UsersProfiles.Where(x => x.Id == userId).FirstOrDefaultAsync();
             var model = await _context.UsersProfiles.FirstOrDefaultAsync(x => x.Id == userId);
@@ -32,7 +37,7 @@ namespace CoreGram.Repositories
                 throw new Exception("Perfil de usuario no encontrado");
             }
 
-            return model;
+            return _mapper.Map<UserProfileDto>(model);
         }
 
     }
