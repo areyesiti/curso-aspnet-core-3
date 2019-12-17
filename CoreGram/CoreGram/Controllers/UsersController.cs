@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CoreGram.Data;
 using CoreGram.Data.Models;
+using CoreGram.Repositories;
 
 namespace CoreGram.Controllers
 {
@@ -15,10 +16,12 @@ namespace CoreGram.Controllers
     public class UsersController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly UserRepository _repository;
 
-        public UsersController(DataContext context)
+        public UsersController(DataContext context, UserRepository repository)
         {
             _context = context;
+            _repository = repository;
 
             if (_context.Users.Count() <= 0)
             {
@@ -33,25 +36,23 @@ namespace CoreGram.Controllers
             }
         }
 
+
         // GET: api/Users
+        /// <summary>
+        /// Este es mi método
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return Ok(await _repository.GetAll());
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
+            return Ok(await _repository.GetById(id));
         }
 
         // PUT: api/Users/5
