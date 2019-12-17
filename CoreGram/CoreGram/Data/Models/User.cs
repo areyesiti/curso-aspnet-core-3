@@ -18,6 +18,9 @@ namespace CoreGram.Data.Models
         [MaxLength(50)]
         public string Email { get; set; }
 
-        public UserProfile Profile { get; set; }
+        public virtual UserProfile Profile { get; set; }
+
+        public virtual IEnumerable<Follower> UsersFollowers { get; set; }
+        public virtual IEnumerable<Follower> UsersFollowings { get; set; }
     }
 }

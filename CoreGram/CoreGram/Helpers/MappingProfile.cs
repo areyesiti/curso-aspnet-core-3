@@ -19,6 +19,9 @@ namespace CoreGram.Helpers
 
             CreateMap<UserProfileDto, UserProfile>();
             CreateMap<UserProfile, UserProfileDto>();
+
+            CreateMap<FollowerDto, Follower>().ReverseMap();            
+            CreateMap<Follower, FollowerInfoDto>();
         }            
     }
 }
