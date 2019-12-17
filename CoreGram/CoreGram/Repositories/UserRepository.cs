@@ -42,5 +42,28 @@ namespace CoreGram.Repositories
             return response;
         }
 
+        public async Task<UserInfoDto> Update(int userId, UserDto dto)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new Exception("Usuario no encontrado");
+            }
+
+            _context.Entry<User>(user).State = EntityState.Detached;
+
+            var model = _mapper.Map<User>(dto);
+            _context.Update(model);
+
+            //_context.Entry(user).CurrentValues.SetValues(dto);
+
+            //_context.Users.Update(user);
+
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<UserInfoDto>(model);
+
+        }
+
     }
 }
