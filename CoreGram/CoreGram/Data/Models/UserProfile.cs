@@ -10,6 +10,7 @@ namespace CoreGram.Data.Models
     public class UserProfile
     {
         [Key]
+        [ForeignKey("User")]
         public int Id { get; set; }                
         [MaxLength(150)]
         public string FullName { get; set; }
