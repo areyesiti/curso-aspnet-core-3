@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CoreGram.Data;
 using CoreGram.Data.Models;
 using CoreGram.Repositories;
+using CoreGram.Data.Dto;
 
 namespace CoreGram.Controllers
 {
@@ -43,14 +44,14 @@ namespace CoreGram.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserInfoDto>>> GetUsers()
         {
             return Ok(await _repository.GetAll());
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserInfoDto>> GetUser(int id)
         {
             return Ok(await _repository.GetById(id));
         }
