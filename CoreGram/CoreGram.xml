@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreGram</name>
+    </assembly>
+    <members>
+        <member name="M:CoreGram.Controllers.CommentController.GetByPost(System.Int32)">
+            <summary>
+            Obtiene todos los comentarios de un post
+            </summary>
+            <param name="postId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.CommentController.Create(CoreGram.Data.Dto.CommentDto)">
+            <summary>
+            Crea un comentario asociado a un post
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.CommentController.Delete(System.Int32)">
+            <summary>
+            Elimina un comentario asociado a un post
+            </summary>
+            <param name="commentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.FollowerController.GetFollowers(System.Int32)">
+            <summary>
+            Obtiene los seguidores de un usuario
+            </summary>
+            <param name="userId"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.FollowerController.GetFollowings(System.Int32)">
+            <summary>
+            Obtiene los usuarios que sigue un usuario
+            </summary>
+            <param name="userId"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.FollowerController.Create(CoreGram.Data.Dto.FollowerDto)">
+            <summary>
+            Añade un seguidor a un usuario
+            </summary>
+            <param name="dto"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.FollowerController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Elimina un seguidor de un usuario
+            </summary>
+            <param name="userId"></param>
+            <param name="followerId"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.LikeController.Like(CoreGram.Data.Dto.LikeDto)">
+            <summary>
+            Añade o quita un like de un post
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.PostController.GetAll">
+            <summary>
+            Obtiene todos los post
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.PostController.GetByUser(System.Int32)">
+            <summary>
+            Obtiene los post de un usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.PostController.GetByFollowings(System.Int32)">
+            <summary>
+            Obtiene los post de los usuarios a los que sigue un usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.PostController.Create(CoreGram.Data.Dto.PostDto)">
+            <summary>
+            Crea un post
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.PostController.Delete(System.Int32)">
+            <summary>
+            Elimina un post
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.Authenticate(CoreGram.Data.Dto.LoginDto)">
+            <summary>
+            Autentifica un usuario
+            </summary>
+            <param name="auth"></param>  
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.Register(CoreGram.Data.Dto.UserDto)">
+            <summary>
+            Registra un usuario
+            </summary>
+            <param name="dto"></param>   
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.GetAll">
+            <summary>
+            Obtiene el listado de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.GetById(System.Int32)">
+            <summary>
+            Obtiene la información de un usuario
+            </summary>
+            <param name="userId"></param> 
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.Update(System.Int32,CoreGram.Data.Dto.UserDto)">
+            <summary>
+            Actualiza la información de un usuario
+            </summary>
+            <param name="userId"></param>
+            <param name="dto"></param>   
+        </member>
+        <member name="M:CoreGram.Controllers.UserController.Delete(System.Int32)">
+            <summary>
+            Elimina un usuario
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="M:CoreGram.Controllers.UserProfileController.GetById(System.Int32)">
+            <summary>
+            Obtiene el perfil de un usuario
+            </summary>
+            <param name="profileId"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.UserProfileController.Update(System.Int32,CoreGram.Data.Dto.UserProfileDto)">
+            <summary>
+            Actualiza o crea el perfil de un usuario
+            </summary>
+            <param name="profileId"></param>
+            <param name="dto"></param>        
+        </member>
+        <member name="M:CoreGram.Controllers.UserProfileController.Delete(System.Int32)">
+            <summary>
+            Elimina el perfil de un usuario
+            </summary>
+            <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Data.Extensions.CommentExtension.ToDto(CoreGram.Data.Models.Comment,System.Int32)">
+            <summary>
+            Método de extensión para mapear un Comment a un CommentDto
+            </summary>
+            <param name="comment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreGram.Helpers.AppSettings">
+            <summary>
+            Cláse correspondiente para obtener las AppSettings en appsettings.json
+            </summary>
+        </member>
+        <member name="T:CoreGram.Helpers.BadRequestException">
+            <summary>
+            Excepciones personalizadas utilizadas en el middleware de excepciones
+            </summary>
+        </member>
+        <member name="T:CoreGram.Helpers.MappingProfile">
+            <summary>
+            Clase de perfil de mapeos para Automapper
+            </summary>
+        </member>
+        <member name="T:CoreGram.Helpers.ResponseError">
+            <summary>
+            Clase tipo respuesta de error (payload de respuesta) utilizada en el middleware de control de excepciones
+            </summary>
+        </member>
+        <member name="T:CoreGram.Middlewares.ErrorHandlerExtensions">
+            <summary>
+            Clase para la creación del middleware reutilizable
+            </summary>
+        </member>
+        <member name="M:CoreGram.Middlewares.ErrorHandlerMiddleware.HandleExceptionAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Manejador de excepciones
+            </summary>
+            <param name="context"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreGram.Middlewares.ErrorHandlerMiddleware.ExceptionResponse(Microsoft.AspNetCore.Http.HttpContext,System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Prepara el payload de respuesta
+            </summary>
+            <param name="context"></param>
+            <param name="code"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
